@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Apache Spark - Grupo 05</title>
+	<link rel="icon" type="image/x-icon" href="resources/spark-logo-rev.svg">
+	<link href='https://fonts.googleapis.com/css?family=DM Sans' rel='stylesheet'>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+	<div class="image">
+		<img style="margin: 0;" src="resources/spark-logo-rev.svg" alt="" width="141" height="72">
+	</div>
+</header>
+
+<main>
+
+<nav class="nav">
+	<ul class="my-ul">
+		<div class="image-top">
+			<img src="resources/linkedin-network.svg" width="90%">
+			<h2 style="color: white;">Apache Spark</h2>
+			<p>Redes de Computadores I - 24.1</p>
+			<p>Grupo 05</p>
+		</div>
+
+		<li id="0."><a style="text-align: center;">Capa</a></li>
+		<li id="1."><a>1. - Introdução</a></li>
+			<li id="1.1."><a><p style="margin-left: 10pt;">1.1. - O que é o Apache Spark?</p></a></li>
+
+				<li id="1.1.1."><a><p style="margin-left: 20pt;">1.1.1. - O que havia antes?</p></a></li>
+				<li id="1.1.2."><a><p style="margin-left: 20pt;">1.1.2. - Definição de Processamento Distribuído</p></a></li>
+				<li id="1.1.3."><a><p style="margin-left: 20pt;">1.1.3. - Importância no processamento de grandes volumes de dados</p></a></li>
+		
+			<li id="1.2."><a><p style="margin-left: 10pt;">1.2. - De início, com Apache Hadoop</p></a></li>
+			<li id="1.3."><a><p style="margin-left: 10pt;">1.3. - Hadoop MapReduce</p></a></li>
+
+
+		<li id="2."><a>2. - Gerenciamento Distribuído</a></li>
+
+			<li id="2.1."><a><p style="margin-left: 10pt;">2.1. - De Hadoop MapReduce para Apache Spark</p></a></li>
+			<li id="2.2."><a><p style="margin-left: 10pt;">2.2. - Directed Acyclic Graph (DAG)</p></a></li>
+
+
+		<li id="3."><a>3. - Dados Distribuídos e Paralelização de Operações</a></li>
+
+			<li id="3.1."><a><p style="margin-left: 10pt;">3.1. - Resilient Distributed Dataset (RDD)</p></a></li>
+			<li id="3.2."><a><p style="margin-left: 10pt;">3.2. - Dataframes e Datasets</p></a></li>
+			<li id="3.3."><a><p style="margin-left: 10pt;">3.3. - Variáveis Compartilhadas</p></a></li>
+			<li id="3.4."><a><p style="margin-left: 10pt;">3.4. - Transformações e Ações</p></a></li>
+			<li id="3.5."><a><p style="margin-left: 10pt;">3.5. - Arquitetura do Apache Spark</p></a></li>
+
+		<li id="4."><a>4. - Aplicações com Apache Spark</a></li>
+
+			<li id="4.1."><a><p style="margin-left: 10pt;">4.1. - Spark para Machine Learning</p></a></li>
+			<li id="4.2."><a><p style="margin-left: 10pt;">4.2. - Spark para Processamento de Big Data</p></a></li>
+			<li id="4.3."><a><p style="margin-left: 10pt;">4.3. - Spark para Processamento de Grafos</p></a></li>
+			<li id="4.4."><a><p style="margin-left: 10pt;">4.4. - Spark para Processamento de Fluxo (Stream Processing), uma visão geral</p></a></li>
+
+		<li id="5."><a>5. - Conclusões</a></li>
+
+		<li id="6."><a>6. - Bibliografia</a></li>
+	</ul>
+</nav>
+
+<div id="content">
+
+<div id="capa">
+	<h1 style="text-align: center; margin-left: 20%;">Apache Spark</h1>
+	<h3>Redes de Computadores I - 24.1</h3>
+	<h3>Trabalho desenvolvido pelos alunos da Universidade Federal do Rio de Janeiro:</h3>
+
+	<ul>
+		<li>Lucas Garcia Santiago de Abreu</li>
+		<li>Matheus Henrique Sant'Anna Cardoso</li>
+		<li>Vinícius Quintanilha Porto Gomes</li>
+	</ul>
+</div>
+
+<div id="introducao">
+	<h1>1. Introdução</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="o_que_e">
+	<h1>1.1. O que é o Apache Spark?</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="antes">
+	<h1>1.1.1. O que havia antes?</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="definicao">
+	<h1>1.1.2. Definição de Processamento Distribuído</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="importancia">
+	<h1>1.1.3. Importância no processamento de grandes volumes de dados</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="apache_hadoop">
+	<h1>1.2. De início, com Apache Hadoop</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="hadoop_mr">
+	<h1>1.3. Hadoop MapReduce</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="gerenciamento_dist">
+	<h1>2. Gerenciamento Distribuído</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="hadoop_mr_spark">
+	<h1>2.1 De Hadoop MapReduce para Apache Spark</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="dag">
+	<h1>2.2 Directed Acyclic Graph (DAG)</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="dados_distribuidos">
+	<h1>3. Dados Distribuídos e Paralelização de Operações</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="rdd">
+	<h1>3.1. Resilient Distributed Dataset (RDD)</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="dataframes">
+	<h1>3.2. Dataframes e Datasets</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="variaveis_compartilhadas">
+	<h1>3.3. Variáveis Compartilhadas</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="transformacoes">
+	<h1>3.4. Transformações e Ações</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="arquitetura">
+	<h1>3.5. Arquitetura do Apache Spark</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="aplicacoes">
+	<h1>4. Aplicações com Apache Spark</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="machine_learning">
+	<h1>4.1. Spark para Machine Learning</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="big_data">
+	<h1>4.2. Spark para Big Data</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="grafos">
+	<h1>4.3. Spark para Processamento de Grafos</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="fluxo">
+	<h1>4.4. Spark para Processamento de Fluxo (Stream Processing), uma visão geral</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="conclusao">
+	<h1>5. Conclusões</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+<div id="bibliografia">
+	<h1>6. Bibliografia</h1>
+	<p>
+	The standard Lorem Ipsum passage, used since the 1500s
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+</div>
+
+</div>
+
+</main>
+
+<script type="text/javascript" src="script.js"></script>
+
+</body>
+</html>
