@@ -47,6 +47,21 @@ h2, h3 {
     overflow: scroll;
 }
 
+.my-ul::-webkit-scrollbar {
+    width: 20px;
+}
+
+.my-ul::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 15px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+.my-ul::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+}
+
 .my-ul li a {
     display: block;
     padding: 8px 16px;
