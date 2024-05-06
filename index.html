@@ -121,10 +121,13 @@
 
 <div id="hadoop_mr">
 	<h1>1.3. Hadoop MapReduce</h1>
-	<p>
-	The standard Lorem Ipsum passage, used since the 1500s
-	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-</p>
+	<p>A estrutura do Framework funciona da seguinte forma:</p>
+	<li>Divisão e distribuição dos dados: os dados são divididos em blocos menores chamados de "splits". Cada split é então distribuído para os nós do cluster de computadores.</li>
+	<li>Fase de Map: uma função definida pelo usuário chamada de função "map" é aplicada a cada split de dados. Esta função produz uma lista de pares chave-valor intermediários.</li>
+	<li>Ordenação e Particionamento: os pares chave-valor intermediários são particionados e agrupados com base na chave. Esses pares são ordenados para garantir que todas as ocorrências da mesma chave estejam agrupadas juntas.</li>
+	<li>Fase de Shuffle e Sort: os pares chave-valor intermediários são transferidos entre os nós do cluster para que todos os valores associados à mesma chave estejam disponíveis em um único nó.</li>
+	<li>Fase de Reduce: uma função definida pelo usuário chamada de função "reduce" é aplicada a cada chave única e à lista de valores associados a essa chave. Esta função pode realizar operações de agregação, filtragem ou outras operações definidas pelo usuário.</li>
+	<li>Saída: os resultados da redução são escritos em arquivos de saída.</li>
 </div>
 
 <div id="gerenciamento_dist">

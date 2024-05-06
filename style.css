@@ -91,6 +91,10 @@ main {
     color: #666;
 }
 
+#content li {
+    color: #666;
+}
+
 #content h1 {
     color: #0B9ACE;
     font-size: 40pt;
