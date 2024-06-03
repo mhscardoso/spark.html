@@ -83,21 +83,97 @@
 <div id="introducao">
 	<h1>1. Introdução</h1>
 	<p>
-	The standard Lorem Ipsum passage, used since the 1500s
-	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-</p>
+		A área de análise de <em>Big Data</em> é repleta de pesquisas e desafios. Ao longo dos anos, torna-se emergente
+		a necessidade por inovações na área em diversos campos da indústria.
+	</p>
+
+	<p>
+		Sendo assim, é essencial um framework desenhado especificamente para lidar com as requisições impostas por
+		dados cada vez mais massivos para preencher as necessidades de velocidade, armazenamento e executar da melhor
+		forma possível os algorítmos pelos quais essas imensas massas de dados serão submetidos.
+	</p>
+
+	<p>
+		Dessa forma, o <em>Apache Spark</em> surge como uma ferramenta que introduziu uma nova abordagem para ciência
+		e engenharia de dados, na qual um único motor (<em>engine</em>) é necessário podendo ser utilizado em diversas
+		linguagens de alto nível, como Java, Python, SQL, entre outras.
+	</p>
+
+	<p>
+		Essa versatilidade garantiu ao Spark uma plena adoção tanto na indústria quanto na academia e, hoje, é utilizada
+		em projetos <em>open source</em> em algumas iniciativas da <em style="font-weight: bold;">Apache Sofware Foundation</em>.
+	</p>
+
+	<p>
+		Dada a sua importância e às interessantes formas como esta ferramenta resolve alguns problemas da computação
+		com soluções que incluem processamento distribuído e em memória, é crucial a abordagem dela em um curso atual
+		de Redes de Computadores.
+	</p>
 </div>
 
 <div id="o_que_e">
 	<h1>1.1. O que é o Apache Spark?</h1>
 	<p>
-		O Apache Spark é um framework de computação distribuída de código aberto, projetado para processamento rápido e eficiente de grandes volumes de dados com suporte a múltiplas linguagens.
-		Ele oferece uma interface simples para programação com pipelines de dados em larga escala, permitindo realizar tarefas complexas como processamento de dados em tempo real, análise de dados, machine learning e processamento de grafos.
+		Com o projeto sendo iniciado em 2009 por <a target="_blank" href="https://people.eecs.berkeley.edu/~matei/">
+		Matei Zaharia</a>
+		e, após ter sido doado para a Apache Software Foundation em 2013 (possuia a licença BSD
+		desde 2010), vários pesquisadores contribuíram para com a ferramenta buscando a melhoria
+		de seu núcleo (<em>core</em>) e suas bibliotecas de mais alto nível.
+	</p>
+	<p>
+		Ao todo, o sistema do Apache Spark consistem em diversos componentes dos quais constam, além
+		de seu próprio núcleo, várias bibliotecas de mais alto nível que permitem executar os algorítmos
+		de aprendizado de máquina ou busca e mineração de dados.
+	</p>
+	<p>
+		Dessas bibliotecas, podemos citar:
+		<ul>
+			<li>
+				Spark's MLlib: Para aprendizado de máquina
+			</li>
+			<li>
+				GraphX: Para análise de Grafos
+			</li>
+			<li>
+				Spark Streaming: Para processamento de stream
+			</li>
+			<li>
+				Spark SQL: Para processamento de dads estruturados
+			</li>
+		</ul>
+
+		<div style="margin: auto; width: 50%;">
+			<img src="resources/graphx.png" width="300" height="90">
+			<img src="resources/spark_streaming.png" width="200" height="150">
+			<img src="resources/spark_mlib.jpeg" width="200" height="150">
+			<img src="resources/spark_aql.jpg" width="200" height="150">
+		</div>
+	</p>
+
+	<p>
+		Com um núcleo independente e tais bibliotecas já desenvolvidas por <q>debaixo dos panos</q>,
+		o Spark mostra uma de duas vantagens que é a possibilidade do uso de diversas linguagens de
+		programação de alto nível oferecendo uma interface simples para programação com pipelines de 
+		dados em larga escala.
+	</p>
+
+	<p>
+		A principal ferramenta está na forma em como o Spark lida com os dados, ou seja, a abstração
+		feita para os dados, com a utilização dos Datasets Distribuídos, ou <em>Resilient Distributed 
+		Datased</em> (RDD) sobre o qual falaremos mais a frente.
 	</p>
 </div>
 
 <div id="definicao">
 	<h1>1.1.1. Definição de Processamento Distribuído</h1>
+
+	<p>
+		É de suma importância que passemos pelo tópico de processamento distribuído ainda que seja apenas
+		para definí-lo. Isso se dá pela sua relevância, não apenas na ferramenta em si da qual se trata
+		este trabalho, mas do contexto de processamento de dados e <em>Big Data</em> como um todo. Sendo
+		assim, uma breve síntese.
+	</p>
+
 	<p>
 		O processamento distribuído é um paradigma de computação no qual tarefas computacionais são executadas em múltiplos dispositivos ou computadores interconectados em uma rede, chamados de nós.
 		O objetivo do processamento distribuído é aumentar a capacidade de processamento e melhorar o desempenho geral, permitindo que grandes volumes de dados sejam processados de forma mais eficiente e rápida.
@@ -253,9 +329,60 @@
 <div id="bibliografia">
 	<h1>6. Bibliografia</h1>
 	<p>
-	The standard Lorem Ipsum passage, used since the 1500s
-	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-</p>
+		- Apache Spark: A Big Data Processing Engine<br>
+	    11/2019<br>
+	    Conference: 2019 2nd IEEE Middle East and North Africa COMMunications Conference (MENACOMM)
+	</p>
+
+	<p>
+		<a target='_blank' href="https://medium.com/@amitjoshi7/spark-architecture-a-deep-dive-2480ef45f0be">- Spark Architecture: A Deep Dive</a><br>
+	    06/2023<br>
+	    Amit Joshi
+	</p>
+
+	<p>
+		<a target='_blank' href='https://www.interviewbit.com/blog/apache-spark-architecture/'>- Apache Spark Architecture – Detailed Explanation</a><br>
+	    01/2024
+	</p>
+
+	<p>
+		<a target="_blank" href="https://granulate.io/blog/apache-spark-architecture-best-practices-alternatives/">
+		- Apache Spark: Architecture, Best Practices, and Alternatives</a><br>
+	    Omer Mesika
+	</p>
+
+	<p>
+		<a target="_blank" href="https://www.analyticsvidhya.com/blog/2021/08/understand-the-internal-working-of-apache-spark/">- Understand The Internal Working of Apache Spark</a><br>
+	    Dhanya Thailappan<br>
+	    08/2021
+	</p>
+
+	<p>
+		<a target="_blank" href="https://spark.apache.org/docs/latest/cluster-overview.html">- Cluster Mode Overview (Spark Docs)</a><br>
+	    Spark Documentation
+	</p>
+
+
+	<p>
+		- Big data analytics on Apache Spark<br>
+	    10/2016<br>
+	    Salloum, S., Dautov, R., Chen, X. et al. Big data analytics on Apache Spark. Int J Data Sci Anal 1, 145–164 (2016). https://doi.org/10.1007/s41060-016-0027-9
+	</p>
+
+
+	<p>
+		<a target="_blank" href="https://managebi.com/2023/09/28/spark-cluster-no-docker/">- SPARK: Criando Cluster com Docker</a><br>
+	    09/2023<br>
+	    Douglas S. Souza
+	</p>
+
+	<p>
+		<a target="_blank" href="https://data-flair.training/blogs/dag-in-apache-spark/">- DAGs Apache Spark</a>
+	</p>
+
+	<p>
+		<a target="_blank" href="https://www.ibm.com/br-pt/topics/apache-spark">- Apache Spark -- IBM</a>
+	</p>
 </div>
 
 </div>
