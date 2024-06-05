@@ -365,8 +365,19 @@
 <div id="gerenciamento_dist">
 	<h1>2. Gerenciamento Distribuído</h1>
 	<p>
-	The standard Lorem Ipsum passage, used since the 1500s
-	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+		O gerenciamento distribuído é essencial para processar grandes volumes de dados, utilizando múltiplas máquinas de forma coordenada para melhorar o desempenho e a resiliência do sistema.
+	</p>
+	<p>
+		<strong>Distribuição de Tarefas:</strong> O trabalho é dividido entre diferentes máquinas (nós) para evitar sobrecarga em uma única máquina e garantir que todas contribuam para o processamento.
+	</p>
+	<p>
+		<strong>Comunicação Entre Nós:</strong> As máquinas comunicam-se via passagem de mensagens ou memória compartilhada para trabalhar de forma sincronizada e eficiente, reduzindo a latência.
+	</p>
+	<p>
+		<strong>Tolerância a Falhas:</strong> O sistema deve continuar operando mesmo se algumas máquinas falharem. Isso é feito por meio da replicação de dados e tarefas, garantindo que outros nós possam assumir funções sem interrupção.
+	</p>
+	<p>
+		<strong>Monitoramento e Ajuste:</strong> O desempenho do sistema é continuamente monitorado e ajustado para garantir eficiência e confiabilidade. Métricas de desempenho e análise de logs são usadas para otimizar a operação.
 	</p>
 </div>
 
@@ -376,9 +387,17 @@
 <div id="hadoop_mr_spark">
 	<h1>2.1 De Hadoop MapReduce para Apache Spark</h1>
 	<p>
-	The standard Lorem Ipsum passage, used since the 1500s
-	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-</p>
+		A transição histórica de Hadoop MapReduce para Apache Spark marca uma evolução significativa na maneira como grandes volumes de dados são processados e analisados. Inicialmente, Hadoop MapReduce dominou o cenário de big data desde seu lançamento em 2006, oferecendo uma solução robusta para o processamento distribuído de dados em clusters de computadores. No entanto, a necessidade de melhorar a velocidade e a eficiência do processamento levou ao desenvolvimento do Apache Spark.
+	</p>
+	<p>
+		<strong>Desenvolvimento do Apache Spark:</strong> Em 2009, Matei Zaharia e sua equipe na Universidade da Califórnia, Berkeley, iniciaram o projeto Apache Spark para superar as limitações do MapReduce. Eles desenvolveram uma nova abordagem de processamento em memória, que reduzia drasticamente o tempo de execução das tarefas. Em 2013, o Spark foi doado à Apache Software Foundation, onde rapidamente ganhou popularidade devido ao seu desempenho superior e flexibilidade.
+	</p>
+	<p>
+	<strong>Adoção na Indústria:</strong> Empresas começaram a adotar o Spark para melhorar suas operações de big data. Sua capacidade de processar dados até 100 vezes mais rápido que o Hadoop MapReduce em memória, e até 10 vezes mais rápido em disco, foi um grande atrativo. Além disso, a API amigável do Spark, suportando várias linguagens de programação, tornou-o acessível para um público mais amplo de desenvolvedores.
+	</p>
+	<p>
+		<strong>Impacto Acadêmico e Industrial:</strong> A academia também reconheceu o potencial do Spark, com muitas pesquisas focadas em melhorar e expandir suas capacidades. A indústria beneficiou-se enormemente, com empresas de tecnologia, finanças, saúde e muitas outras áreas implementando Spark para análise de dados, aprendizado de máquina, processamento de streaming e muito mais.
+	</p>
 </div>
 
 
@@ -387,9 +406,31 @@
 <div id="dag">
 	<h1>2.2 Directed Acyclic Graph (DAG)</h1>
 	<p>
-	The standard Lorem Ipsum passage, used since the 1500s
-	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-</p>
+		O Directed Acyclic Graph (DAG) é uma estrutura fundamental no Apache Spark, que representa um avanço significativo em relação ao modelo de MapReduce. O DAG permite que Spark realize otimizações avançadas e maximize a eficiência do processamento de dados.
+	</p>
+	<p>
+		<strong>Definição de DAG:</strong> Um DAG é uma estrutura de dados em forma de gráfico onde os nós representam operações de computação e as arestas representam a dependência de dados entre essas operações. O termo "acyclic" indica que o gráfico não possui ciclos, ou seja, não é possível retornar ao mesmo nó através de um caminho diferente.
+	</p>
+	<p>
+		<strong></strong>Funcionamento no Spark:</strong> No Spark, quando uma operação é submetida, o sistema cria um DAG que descreve todas as etapas necessárias para completar essa operação. Em vez de processar cada etapa sequencialmente e gravar no disco após cada operação, como no MapReduce, Spark executa uma série de transformações em memória, seguindo as dependências especificadas pelo DAG.
+	</p>
+	<p>
+		<strong></strong>Vantagens do DAG:</strong>
+		<ul>
+			<li><b>Otimização de Tarefas:</b> O DAG permite que o Spark otimize o plano de execução globalmente, em vez de em cada etapa individualmente. Isso resulta em menos operações de leitura e gravação em disco, reduzindo o tempo de processamento.</li>
+			<li><b>Resiliência:</b> Em caso de falha de um nó, o Spark pode recomputar apenas as partes afetadas do DAG, utilizando os dados intermediários armazenados em memória, sem precisar reiniciar todo o processo.</li>
+			<li><b>Eficiência:</b> Com o DAG, o Spark pode executar operações em paralelo sempre que possível, aproveitando ao máximo os recursos do cluster.</li>
+		</ul>
+	</p>
+	<p>
+		<strong></strong>Exemplo de Uso do DAG:</strong> Imagine um processo de análise de dados que envolve várias etapas, como filtragem, mapeamento e redução. No Spark, essas etapas são representadas como um DAG, onde cada operação depende dos resultados das operações anteriores. O Spark analisa esse DAG e identifica as oportunidades para executar operações em paralelo e minimizar as operações de I/O.
+	</p>
+	<p>
+		<strong>Comparação com MapReduce:</strong> Diferentemente do MapReduce, que processa dados em etapas discretas e grava no disco entre cada etapa, o DAG do Spark permite que as operações sejam encadeadas e processadas em memória. Isso não apenas acelera o processamento, mas também simplifica a programação, já que os desenvolvedores podem escrever seus algoritmos como um fluxo de transformações em vez de uma série de tarefas independentes.
+	</p>
+	<p>
+		Em resumo, o Directed Acyclic Graph (DAG) é um componente crucial que permite ao Apache Spark realizar otimizações avançadas, melhorar a eficiência e a resiliência do processamento de dados. A utilização do DAG marca uma grande melhoria em relação ao modelo de MapReduce, permitindo que o Spark ofereça um desempenho superior e uma experiência de desenvolvimento mais intuitiva.
+	</p>
 </div>
 
 
