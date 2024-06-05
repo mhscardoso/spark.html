@@ -236,8 +236,80 @@
 <div id="apache_hadoop">
 	<h1>1.2. De início, com Apache Hadoop</h1>
 	<p>
-		Antes do Apache Spark, uma das principais tecnologias utilizadas era o Apache Hadoop, que se baseava no paradigma de MapReduce para processar grandes conjuntos de dados em clusters distribuídos. Embora eficaz para muitos casos de uso, o MapReduce tinha limitações em relação à velocidade de processamento de dados iterativos e interativos, devido à necessidade de escrever e ler dados do disco repetidamente.
+		O Apache Hadoop é um framework de código aberto projetado para o armazenamento e processamento
+		distribuído de grandes volumes de dados em clusters de computadores. Utilizando modelos de 
+		programação simples, ele permite que essas tarefas sejam realizadas de forma eficiente. O Hadoop é 
+		escalável, podendo ser expandido de um único computador para milhares de máquinas em um cluster, com 
+		cada uma delas fornecendo computação e armazenamento local. Dessa maneira, o Hadoop é capaz de 
+		gerenciar e processar grandes conjuntos de dados, que podem variar de gigabytes a petabytes.
 	</p>
+
+	<p>
+		O framework principal do Hadoop é composto por quatro módulos que, juntos, formam o ecossistema 
+		Hadoop:
+	</p>
+
+	<ul>
+		<li>
+		<b>Hadoop Distributed File System (HDFS):</b> Sendo o componente central do ecossistema, o HDFS é um
+		sistema de arquivos distribuído que permite acesso de alta capacidade aos dados do aplicativo, 
+		sem a necessidade de definir esquemas antecipadamente.
+		</li>
+
+		<li>
+		<b>Yet Another Resource Negotiator (YARN):</b> O YARN é uma plataforma de gerenciamento de
+		recursos que
+		coordena os recursos de computação em clusters e os utiliza para agendar os aplicativos dos
+		usuários, realizando a programação e alocação de recursos em todo o sistema Hadoop.
+		</li>
+
+		<li>
+		<b>Hadoop Common:</b> Inclui as bibliotecas e utilitários que são utilizados e compartilhados
+		pelos demais
+		módulos do Hadoop.
+		</li>
+
+		<li>
+		<b>MapReduce:</b> Este é um modelo de programação voltado para o processamento de grandes volumes
+		de dados.
+		Utilizando algoritmos de computação distribuída e paralela, o MapReduce facilita a transferência da
+		lógica de processamento, permitindo a criação de aplicativos que transformam grandes conjuntos de
+		dados em conjuntos mais gerenciáveis.
+		</li>
+	</ul>
+
+	<p>
+		A plataforma funciona distribuindo jobs de big data e análise do Hadoop entre nós em um
+		cluster de compute, dividindo-os em workloads menores que podem ser executados em paralelo.
+	</p>
+
+	<p>
+		Todos os módulos do Hadoop são desenvolvidos com a premissa básica de que falhas de hardware 
+		em máquinas individuais ou em racks de máquinas são eventos comuns e devem ser gerenciados
+		automaticamente pelo framework de software.
+	</p>
+
+	<p>
+		Claramente o MapReduce é o módulo mais atraente (pelo menos para os fins que estamos tratando aqui)
+		para o quesito de análide de grandes volumes de dados. Não é a toa que é este o predecessor do
+		Apache Spark.
+	</p>
+
+
+	<p>
+		De forma geral, o Apache Hadoop já resolve algumas necessidades no quesito de <b>Sistemas
+		Distribuídos</b>. Sua componente mais promissora com relação aos dados será mais discutida
+		no próximo tópico.
+	</p>
+
+	<h3>Problemas com Apache Hadoop</h3>
+	<p>
+		No entanto, as arquiteturas Hadoop enfrentam diversos desafios, especialmente ao longo do tempo.
+		O Hadoop pode ser excessivamente complexo, demandando recursos e conhecimento significativos para
+		sua configuração, manutenção e atualizações. Além disso, é demorado e ineficiente devido às
+		frequentes leituras e gravações necessárias para realizar cálculos.
+	</p>
+
 </div>
 
 
@@ -249,31 +321,42 @@
 
 	<ul>
 		<li>
-			Divisão e distribuição dos dados: os dados são divididos em blocos menores chamados de "splits".
+			<b>Divisão e distribuição dos dados:</b> os dados são divididos em blocos menores chamados de "splits".
 			Cada split é então distribuído para os nós do cluster de computadores.
 		</li>
 		<li>
-			Fase de Map: uma função definida pelo usuário chamada de função "map" é aplicada a cada split 
+			<b>Fase de Map:</b> uma função definida pelo usuário chamada de função "map" é aplicada a cada split 
 			de dados. Esta função produz uma lista de pares chave-valor intermediários.
 		</li>
 		<li>
-			Ordenação e Particionamento: os pares chave-valor intermediários são particionados e agrupados
+			<b>Ordenação e Particionamento:</b> os pares chave-valor intermediários são particionados e agrupados
 			com base na chave. Esses pares são ordenados para garantir que todas as ocorrências da mesma
 			chave estejam agrupadas juntas.
 		</li>
 		<li>
-			Fase de Shuffle e Sort: os pares chave-valor intermediários são transferidos entre os nós do
+			<b>Fase de Shuffle e Sort:</b> os pares chave-valor intermediários são transferidos entre os nós do
 			cluster para que todos os valores associados à mesma chave estejam disponíveis em um único nó.
 		</li>
 		<li>
-			Fase de Reduce: uma função definida pelo usuário chamada de função "reduce" é aplicada a cada
+			<b>Fase de Reduce:</b> uma função definida pelo usuário chamada de função "reduce" é aplicada a cada
 			chave única e à lista de valores associados a essa chave. Esta função pode realizar operações 
 			de agregação, filtragem ou outras operações definidas pelo usuário.
 		</li>
 		<li>
-			Saída: os resultados da redução são escritos em arquivos de saída.
+			<b>Saída:</b> os resultados da redução são escritos em arquivos de saída.
 		</li>
 	</ul>
+
+	<p>
+		A questão aqui é que, após as operações, o MapReduce persiste os dados no disco, o que
+		pode acarretar em perdas de performance significativas.
+	</p>
+
+	<p>
+		Por mais que o processamento distribuído já paralelize as operações, é necessário que as decisões
+		e os processos (como executar algorítmos de aprendizado de máquina) sejam mais eficazes
+		dado uma grande quantidade de dados.
+	</p>
 </div>
 
 
@@ -284,7 +367,7 @@
 	<p>
 	The standard Lorem Ipsum passage, used since the 1500s
 	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-</p>
+	</p>
 </div>
 
 
@@ -502,7 +585,16 @@
 	</p>
 
 	<p>
-		<a target="_blank" href="https://www.ibm.com/br-pt/topics/apache-spark">- Apache Spark -- IBM</a>
+		<a target="_blank" href="https://www.ibm.com/br-pt/topics/apache-spark">- Apache Spark (IBM)</a>
+	</p>
+
+	<p>
+		<a target="_blank" href="https://cloud.google.com/learn/what-is-hadoop?hl=pt-br">- O que é 
+		Apache Hadoop? (Google)</a>
+	</p>
+
+	<p>
+		<a target="_blank" href="https://aws.amazon.com/pt/what-is/hadoop/">- O que é Hadoop (AWS)</a>
 	</p>
 </div>
 
