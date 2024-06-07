@@ -439,9 +439,17 @@
 <div id="dados_distribuidos">
 	<h1>3. Dados Distribuídos e Paralelização de Operações</h1>
 	<p>
-	The standard Lorem Ipsum passage, used since the 1500s
-	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-</p>
+		Chegamos ao momento no qual lidamos com as estruturas que permitem o funcionamento do Spark.
+		Estudar a forma como os dados ficam distribuídos é primordial.
+	</p>
+
+	<p>
+		O Apache Spark apresenta várias abstrações importantes para a representação de dados e a 
+		gestão da computação. Nos níveis mais básicos, os dados são representados por Conjuntos de
+		Dados Distribuídos Resilientes (RDDs) e as operações sobre esses RDDs são classificadas como
+		transformações ou ações. Além disso, o Spark inclui variáveis de broadcast e acumuladores,
+		que permitem o compartilhamento de variáveis em um cluster de computação.
+	</p>
 </div>
 
 
@@ -450,10 +458,37 @@
 <div id="rdd">
 	<h1>3.1. Resilient Distributed Dataset (RDD)</h1>
 	<p>
-	The standard Lorem Ipsum passage, used since the 1500s
-	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-</p>
+		O conceito central do Spark é o conjunto de dados distribuído resiliente (RDD), uma coleção 
+		de elementos que é tolerante a falhas e pode ser manipulada em paralelo. Existem duas formas
+		de criar RDDs: uma é paralelizando uma coleção já existente no seu programa driver; a outra
+		é referenciando um conjunto de dados em um sistema de armazenamento externo, como um sistema
+		de arquivos compartilhado, HDFS, HBase ou qualquer fonte de dados que suporte Hadoop InputFormat.
+	</p>
+
+	<div class="centered-div">
+		<img src="resources/rdd_image.png" width="600">
+		<p style="font-size: 14pt; text-align: justify;">
+			Avaliação tardia de RDDs: as transformações em RDDs são avaliadas de maneira tardia,
+			ou seja, o Spark só computa os RDDs quando uma ação é executada. O Spark rastreia o 
+			grafo de dependências das transformações, que é utilizado para calcular cada RDD
+			sob demanda e recuperar dados perdidos (imagem adaptada de: 
+			<a target="_blank" href="http://www.slideshare.net/GirishKhanzode/apache-spark-core">
+				http://www.slideshare.net/GirishKhanzode/apache-spark-core
+			</a>)
+		</p>
+	</div>
+
+	<p>
+		Sendo uma abstração de memória distribuída tolerante a falhas, o RDD evita a replicação 
+		de dados ao manter um grafo das operações que o construíram. Isso permite recomputar
+		de forma eficiente os dados perdidos em caso de falhas. As partições de um RDD podem ser
+		gerenciadas para garantir consistência ao longo das iterações, permitindo ao núcleo do
+		Spark coparticionar RDDs e agendar tarefas de maneira coordenada para evitar a movimentação
+		de dados. Para evitar a recomputação, os RDDs devem ser explicitamente armazenados em cache
+		quando a aplicação precisa reutilizá-los várias vezes.
+	</p>
 </div>
+
 
 
 
@@ -461,9 +496,61 @@
 <div id="dataframes">
 	<h1>3.2. Dataframes e Datasets</h1>
 	<p>
-	The standard Lorem Ipsum passage, used since the 1500s
-	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-</p>
+		De fato, o Spark é construído sobre a API do RDD. Diversas melhorias foram-lhe impostas, 
+		inclusive as que se tratavam sobre as abstrações de dados, gerando melhores formas de 
+		como realizar essas abstrações.
+	</p>
+
+	<p>
+		É mais comum, principalmente em aplicações web, que os dados estejam estruturados em tabelas
+		em um modelo relacional. A principal ferramenta é um banco de dados como Postgres, MySQL, 
+		SQLServer, entre tantos outros. Além disso, parte da ferramenta de análise de dados é o SQL,
+		sendo uma linguagem muito útil para lidar com dados.
+	</p>
+
+	<p>
+		Pensando nesses tipos de dados estruturados, foi introduzido a API DataFrame, parte do Spark SQL.
+		Um DataFrame funciona como uma tabela em um banco de dados relacional ou como um data frame no
+		R/Python, mas com as
+		otimizações avançadas do Spark, que avalia as transformações de maneira preguiçosa. Assim como
+		os RDDs, é uma coleção distribuída de dados, mas organizada em colunas nomeadas (ou seja, uma
+		coleção de registros estruturados). Isso fornece ao Spark mais informações sobre a estrutura
+		dos dados e das operações, possibilitando otimizações adicionais.
+	</p>
+
+	<p>
+		Embora a API RDD seja versátil, ela oferece poucas oportunidades para otimizações automáticas
+		devido à falta de informações sobre a estrutura dos dados e a semântica das funções do usuário.
+		Por outro lado, a API DataFrame permite realizar operações relacionais em RDDs e fontes de dados
+		externas, facilitando uma integração rica entre operações relacionais e funcionais em aplicações
+		Spark. Atualmente, os DataFrames são a principal forma de representação de dados na API de
+		Pipelines de ML do Spark. Outras bibliotecas do Spark, como o GraphFrames para o GraphX, também
+		começaram a se integrar ao Spark SQL via API DataFrame.
+	</p>
+
+	<p>
+		Outra melhoria significativa é a API Dataset, uma interface experimental introduzida no Spark
+		1.6. Esta API é uma extensão da API DataFrame, oferecendo uma interface de programação orientada
+		a objetos com verificação de tipos. Um Dataset é uma coleção imutável e fortemente tipada de
+		objetos mapeados para um esquema relacional. O objetivo é combinar os benefícios dos RDDs com
+		as vantagens do mecanismo de execução otimizado do Spark SQL (ou seja, o otimizador Catalyst)
+		e a rápida codificação na memória do Tungsten.
+	</p>
+
+	<p>
+		Abaixo, um exemplo de uso do DataFrame.
+	</p>
+
+	<div class="centered-div">
+		<img src="resources/spark_dataframe_example.png" width="700">
+	</div>
+
+	<p>
+		Sua API é, de fato, muito simples. Abaixo, um link para exemplos, de onte a figura acima foi
+		retirada.
+	</p>
+
+	<a target="_blank" href="https://spark.apache.org/examples.html">Exemplos -- Spark Dataframe</a>
 </div>
 
 
@@ -472,9 +559,18 @@
 <div id="variaveis_compartilhadas">
 	<h1>3.3. Variáveis Compartilhadas</h1>
 	<p>
-	The standard Lorem Ipsum passage, used since the 1500s
-	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-</p>
+		Embora o Spark utilize uma arquitetura 'shared-nothing', sem um espaço de memória global
+		compartilhado entre o programa driver e as tarefas, ele oferece suporte a dois tipos de
+		variáveis compartilhadas para casos de uso específicos: variáveis de broadcast e acumuladores.
+	</p>
+
+	<p>
+		As variáveis de broadcast são usadas para manter variáveis de leitura em cache em cada
+		máquina, como uma cópia de um grande conjunto de dados de entrada, evitando a necessidade
+		de enviar uma cópia com cada tarefa. Por outro lado, os acumuladores são variáveis às
+		quais os workers podem adicionar valores apenas através de operações associativas, sendo
+		que o driver pode apenas ler esses valores. Eles são úteis para implementar contadores ou somas.
+	</p>
 </div>
 
 
@@ -483,9 +579,28 @@
 <div id="transformacoes">
 	<h1>3.4. Transformações e Ações</h1>
 	<p>
-	The standard Lorem Ipsum passage, used since the 1500s
-	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-</p>
+		Além da abstração dos RDDs, o Spark oferece uma coleção de operações paralelas:
+		transformações e ações.
+	</p>
+
+	<p>
+		As transformações são operações determinísticas e <em>lazy</em>, que definem um novo RDD
+		sem computá-lo de imediato. Com uma transformação estreita (como map, filter, etc.),
+		cada partição do RDD pai é utilizada por no máximo uma partição do RDD filho. Em contrapartida,
+		várias partições filhas podem depender da mesma partição do RDD pai devido a transformações
+		amplas (como join, groupByKey, etc.).
+	</p>
+
+	<p>
+		Uma ação (como count, first, take, etc.) inicia a computação em um RDD e retorna os
+		resultados para o programa driver ou os escreve em um armazenamento externo.
+		As transformações são executadas apenas quando uma ação é chamada. Nesse momento,
+		o Spark divide a computação em tarefas que são executadas em paralelo em máquinas diferentes.
+		Cada máquina realiza tanto sua parte das transformações quanto a ação chamada, retornando
+		apenas sua resposta ao programa driver. Com transformações e ações, as computações podem ser
+		organizadas em várias etapas de um pipeline de processamento, sendo essas etapas separadas por
+		operações de shuffle distribuídas para redistribuição de dados.
+	</p>
 </div>
 
 
@@ -493,10 +608,42 @@
 
 <div id="arquitetura">
 	<h1>3.5. Arquitetura do Apache Spark</h1>
+	
+	<h3>Gerenciadores de Cluster e Fontes de Dados</h3>
+
 	<p>
-	The standard Lorem Ipsum passage, used since the 1500s
-	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-</p>
+		Um gerenciador de cluster é utilizado para obter recursos do cluster para a execução de jobs.
+		O núcleo do Spark pode operar sobre diversos gerenciadores de cluster, como Hadoop YARN, Apache
+		Mesos, Amazon EC2 e o gerenciador de cluster nativo do Spark (standalone). O gerenciador de
+		cluster é responsável por gerenciar o compartilhamento de recursos entre as aplicações Spark.
+		Além disso, o Spark pode acessar dados armazenados no HDFS, Cassandra, HBase, Hive, Alluxio e
+		qualquer fonte de dados compatível com Hadoop.
+	</p>
+
+	<div class="centered-div">
+		<img src="resources/cluster_spark.png" width="500">
+		<p>
+			Figura retirada da documentação do Apache Spark.
+		</p>
+	</div>
+
+	<h3>Aplicações Spark</h3>
+
+	<p>
+		Executar uma aplicação Spark envolve cinco entidades principais: o programa driver, 
+		o gerenciador de cluster, os workers, os executores e as tarefas. O programa driver 
+		é uma aplicação que usa o Spark como uma biblioteca e define o fluxo de controle de 
+		alto nível da computação desejada. Enquanto um worker fornece recursos de CPU, memória 
+		e armazenamento para uma aplicação Spark, um executor é um processo JVM 
+		(Java Virtual Machine) que o Spark cria em cada worker para essa aplicação. 
+		Um job é um conjunto de computações (como um algoritmo de processamento de dados) que 
+		o Spark executa em um cluster para fornecer resultados ao programa driver. Uma aplicação 
+		Spark pode lançar múltiplos jobs. O Spark divide um job em um gráfico acíclico direcionado 
+		(DAG) de estágios, onde cada estágio é uma coleção de tarefas. Uma tarefa é a menor unidade 
+		de trabalho que o Spark envia a um executor. O ponto de entrada principal para as 
+		funcionalidades do Spark é o SparkContext, que o programa driver usa para acessar o Spark. 
+		Um SparkContext representa uma conexão com um cluster de computação.
+	</p>
 </div>
 
 
@@ -659,9 +806,27 @@
 <div id="conclusao">
 	<h1>5. Conclusões</h1>
 	<p>
-	The standard Lorem Ipsum passage, used since the 1500s
-	"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-</p>
+		O Apache Spark, de fato, intruduziu muitos avanços computacionais na área de dados. Suas abstrações
+		e as escolhas arquiterurais feitas, o tornaram o formato padrão para se lidar com dados, mostrando
+		ser, de fato, um avanço.
+	</p>
+
+	<p>
+		Sua adoção vai além da indústria e chega até as universidades (uma vez que nasceu em uma) e se
+		mostra útil para a resolução de questões públicas, pesquisas, e o que mais utilizar dados para
+		alguma tomada de decisão ou avanço tecnológico/científico.
+	</p>
+
+	<p>
+		Sua facilidade e a possibilidade de integrar com diversas linguagens de programação também torna
+		essa ferramenta muito útil. Ora, analistas de dados se especializam (quase sempre) em algumas
+		linguagens já glorificadas, tais como Python, R e SQL. De uma forma simples, é possível que cada
+		uma dessas linguagens utilize a API do Spark.
+	</p>
+
+	<p>
+		Tudo isso faz do Spark uma ferramenta necessária nos dias atuais na indústria ou universidades.
+	</p>
 </div>
 
 
@@ -738,7 +903,10 @@
 	</p>
 </div>
 
-</div>
+
+
+
+</div> <!-- div content -->
 
 </main>
 
